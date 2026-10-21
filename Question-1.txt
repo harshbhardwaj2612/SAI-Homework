@@ -1,0 +1,36 @@
+Question Title: Advanced File Management
+ 
+Question Link:
+https://my.newtonschool.co/playground/code/4ks5o139cfoh?lecture_hash=v210chxjexei
+ 
+Solution:
+ 
+mkdir project-files
+cd project-files
+touch report.docx summary.docx draft.docx
+cp report.docx report_backup.docx
+mkdir old
+mv draft.docx old/
+mv summary.docx final_summary.docx
+cp final_summary.docx old/
+rm report_backup.docx
+ 
+Approach:
+ 
+1. First, I checked my current working directory using the pwd command. The output showed that I was currently in the /box directory.
+ 
+2. The question asks me to create a directory named project-files. I used the mkdir project-files command to create it.
+ 
+3. The question asks me to create 3 files inside project-files directory with specified names for that I used touch command
+ 
+4. It asks for copy report.docx into a new file named report_backup.txt . Using cp command I copy whole content into report_backup.txt
+ 
+5. Then it asks to create a new directory called inside project-files. I used mkdir old to create it.
+ 
+6. Now for next step in which I have to move draft.docx into old directory. I used mv command for that.
+ 
+7. In next step it want to rename summary.docx into final_summary.docx. For that also I used mv command
+ 
+8. Now question want us to copy final_summary.docx into old directory. For that I use cp command.
+ 
+9. The final step is to remove report_backup.txt. I used rm report_backup.txt to do that.
