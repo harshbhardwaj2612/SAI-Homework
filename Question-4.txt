@@ -1,0 +1,20 @@
+Question Title: Deployment Project Permissions
+
+Question Link: 
+https://my.newtonschool.co/playground/code/3wz3wv7c89fo?lecture_hash=vifkrugjcwth
+
+Solution: 
+
+chmod 700 deployment/app/*.py
+chmod 770 deployment/datasets/*.csv
+chmod 770 deployment/datasets
+chmod 644 deployment/docs/*.md
+chmod 755 deployment/bin/*.sh
+
+Approach: 
+
+1. As, asked in question we have to change the permissions of mention files like read write and execute permission for all py files inside deployment/app directory. For that I used chmod 700(4 for Read, 2 for Write, 1 for Execute) after that full path and it says to convert all py files of that path so * helps in doing that.
+
+2. Same as Step 1, In this step we have to change the permissions of csv file present at datasets directory also of the directory too. For that we use chmod 770.
+
+3. Same goes for md files inside docs and also same goes for script files inside bin directory.
