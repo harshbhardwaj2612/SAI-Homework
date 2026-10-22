@@ -1,0 +1,33 @@
+Question Title: Data Breach Response
+ 
+Question Link: 
+https://my.newtonschool.co/playground/code/orlr84xpc3oo?lecture_hash=vifkrugjcwth
+
+Solution:
+
+cp breach_response/evidence/log_dump.txt breach_response/log_dump.txt
+chmod 777 breach_response/evidence
+mv breach_response/evidence breach_response/secure
+chmod 555 breach_response/secure/evidence
+chmod 777 breach_response/reports/incident_summary.txt
+echo "Breach confirmed" > breach_response/reports/incident_summary.txt
+chmod 444 breach_response/reports/incident_summary.txt
+echo "Forensics Complete" > breach_response/secure/forensics_report.txt
+chmod 600 breach_response/secure/forensics_report.txt
+chmod 777 breach_response/reports/incident_summary.txt
+echo "Escalated to security team" >> breach_response/reports/incident_summary.txt
+chmod 444 breach_response/reports/incident_summary.txt
+
+Approach: 
+
+1. As question says I copied log_dump.txt from evidence to parent directory.
+
+2. Now moving evidence directory into secure directory for which change command to 777 using chmod and then mv command to move it and restoring permission with chmod 555.
+
+3. Same for incident_summary.txt I first have to change the permission to 777 then append the given content into it and at last restore the permission to 444.
+
+4. Now created a file named as forensic_report.txt appending the given content using echo.
+
+5. Then changing its permissions to 600
+
+6. Repeat Step 3
