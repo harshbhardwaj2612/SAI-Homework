@@ -1,0 +1,29 @@
+Question Title: Create a Project Folder Structure
+ 
+Question Link: 
+https://my.newtonschool.co/playground/code/jipp2htnvrww?lecture_hash=v210chxjexei
+ 
+Solution: 
+ 
+echo "mkdir service" > create-service
+echo "cd service" >> create-service
+echo "mkdir controllers" >> create-service
+echo "mkdir models" >> create-service
+echo "mkdir routes" >> create-service
+echo "mkdir middleware" >> create-service
+printf "echo 'console.log(" >> create-service
+printf '"Server started");' >> create-service
+echo "' > server.js" >> create-service
+echo "echo 'API Service' > README.md" >> create-service
+chmod +x create-service
+create-service
+
+Approach: 
+ 
+1. First, I checked my current working directory and content inside it using the pwd and ls command. The output showed that I was currently in the /box directory and nothing at all.
+ 
+2. The question asks me to create a executable script called create-service when executed it create a folder named service inside it create 4 more folders with specified names after that 2 files one javascript file named as server.js containing "console.log("Server started");" and one file named as README.md containing "API Service"
+
+3. For that first I append all my commands in create-service
+
+4. Then give it the permission of execution and execute it to make all contents and command working
