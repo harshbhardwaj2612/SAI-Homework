@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsh Bhardwaj — CS Student, Builder & Hacktoberfest Hackathon Winner</title>
+  <meta name="description" content="Portfolio of Harsh Bhardwaj — First-year Computer Science student at Newton School of Technology, Hyderabad. Hacktoberfest Hackathon Winner. Creator of Reporbit.">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Sora', 'sans-serif'],
+            body: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            sv: {
+              cyan: '#00e5ff',
+              crimson: '#ff1744',
+              yellow: '#ffea00',
+              deep: '#06030b',
+              surface: '#0c0716'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="spider-halftone">
+
+  <!-- Ambient Particles Canvas Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- ==========================================================================
+       NAVBAR
+       ========================================================================== -->
+  <nav id="navbar" class="navbar">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00e5ff] via-[#8b5cf6] to-[#ff1744] flex items-center justify-center font-heading font-extrabold text-white text-sm shadow-lg shadow-[#00e5ff]/25 group-hover:scale-110 transition-transform duration-300 border border-white/20">
+          HB
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-bold text-white text-sm tracking-tight hidden sm:block glitch-target">
+            harsh<span class="text-[#00e5ff]">.dev</span>
+          </span>
+          <span class="text-[9px] font-mono text-gray-400 hidden sm:block">EARTH-1610 // NST HYDERABAD</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#about" class="nav-link glitch-target">About</a>
+        <a href="#skills" class="nav-link glitch-target">Skills</a>
+        <a href="#projects" class="nav-link glitch-target">Reporbit</a>
+        <a href="#achievements" class="nav-link glitch-target">Wins</a>
+        <a href="#journey" class="nav-link glitch-target">Journey</a>
+        <a href="#contact" class="nav-link glitch-target">Contact</a>
+      </div>
+
+      <!-- Action Button & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex btn-magnetic btn-primary text-xs !py-2.5 !px-5 !rounded-xl !text-sm">
+          <span>Let's Connect</span>
+        </a>
+        <button id="menu-toggle" class="md:hidden w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="mobile-menu">
+    <button id="menu-close" class="absolute top-5 right-5 w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Reporbit</a>
+    <a href="#achievements">Wins</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION — CLASSY, MODERN & CINEMATIC
+       ========================================================================== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-5 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left: Headline & Bio -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          
+          <!-- Status Badge -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#00e5ff]/30 mb-6 reveal">
+            <div class="status-pulse"></div>
+            <span class="font-mono text-xs text-[#00e5ff] tracking-wide">1st Year CSC • Newton School of Technology</span>
+          </div>
+
+          <!-- Main Title with Dimensional Glitch -->
+          <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6 reveal">
+            Hey, I'm<br>
+            <span class="grad-spider glitch-target">Harsh Bhardwaj</span>
+          </h1>
+
+          <!-- Typewriter Subtitle -->
+          <div class="flex items-center justify-center lg:justify-start gap-1 mb-8 reveal" style="transition-delay: 0.15s">
+            <span class="font-mono text-base sm:text-lg text-gray-300" id="typewriter-text"></span>
+            <span class="typewriter-cursor"></span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-lg text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8 reveal" style="transition-delay: 0.25s">
+            A first-year CS student taking the <strong class="text-[#00e5ff] glitch-target">"Leap of Faith"</strong> into coding, AI, and building real-world software. Deep-diving into Python, mastering mathematics, and turning curiosity into impactful tools.
+          </p>
+
+          <!-- Classy Quote Card -->
+          <div class="p-3.5 rounded-xl bg-[#0c0716]/90 border-l-4 border-[#00e5ff] mb-8 max-w-xl mx-auto lg:mx-0 text-left reveal" style="transition-delay: 0.3s">
+            <p class="font-mono text-xs text-[#ffea00] italic">
+              "When will I know I'm ready? — You won't. It's a leap of faith. That's all it is."
+            </p>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 reveal" style="transition-delay: 0.35s">
+            <a href="#projects" class="btn-magnetic btn-primary">
+              <span>View Reporbit (Hackathon Win)</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <a href="#contact" class="btn-magnetic btn-outline">
+              <span>Get In Touch</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mt-10 reveal" style="transition-delay: 0.45s">
+            <div class="float-badge px-3.5 py-1.5 rounded-xl bg-[#00e5ff]/10 border border-[#00e5ff]/30 font-mono text-xs text-[#00e5ff] flex items-center gap-2">
+              <span>🐍</span> Python
+            </div>
+            <div class="float-badge px-3.5 py-1.5 rounded-xl bg-[#ff1744]/10 border border-[#ff1744]/30 font-mono text-xs text-[#ff5252] flex items-center gap-2">
+              <span>🧮</span> Mathematics
+            </div>
+            <div class="float-badge px-3.5 py-1.5 rounded-xl bg-[#ffea00]/10 border border-[#ffea00]/30 font-mono text-xs text-[#ffea00] flex items-center gap-2">
+              <span>🤖</span> SNAI
+            </div>
+            <div class="float-badge px-3.5 py-1.5 rounded-xl bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 font-mono text-xs text-violet-300 flex items-center gap-2">
+              <span>⚛️</span> Physics
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Classy Holographic Multiverse Terminal Card -->
+        <div class="lg:col-span-5 flex items-center justify-center reveal-right">
+          <div class="w-full max-w-md">
+            
+            <div class="glass card-glitch-border rounded-2xl overflow-hidden p-6 relative">
+              
+              <!-- Terminal Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-[#ff1744]/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#ffea00]/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#00e5ff]/80"></div>
+                </div>
+                <div class="font-mono text-[10px] text-gray-400 tracking-wider">
+                  DIMENSION // EARTH-1610
+                </div>
+                <div class="w-2 h-2 rounded-full bg-[#00e5ff] animate-ping"></div>
+              </div>
+
+              <!-- Python Class Code Excerpt -->
+              <div class="font-mono text-xs leading-relaxed space-y-2 text-gray-300">
+                <p><span class="text-[#ff1744]">class</span> <span class="text-[#00e5ff] font-bold">HarshBhardwaj</span>:</p>
+                <div class="pl-4 space-y-1.5 text-gray-400">
+                  <p>campus = <span class="text-[#ffea00]">"Newton School of Tech"</span></p>
+                  <p>branch = <span class="text-[#ffea00]">"CSE (1st Year)"</span></p>
+                  <p>hackathon = <span class="text-[#00e5ff]">"Hacktoberfest (3rd Place 🏆)"</span></p>
+                  <p>flagship = <span class="text-[#ffea00]">"Reporbit (Zero-to-Code)"</span></p>
+                  <p>learning = [<span class="text-[#00e5ff]">"Python"</span>, <span class="text-[#00e5ff]">"SNAI"</span>, <span class="text-[#00e5ff]">"Maths"</span>]</p>
+                </div>
+                <p class="pt-2 text-gray-400 pl-4">
+                  <span class="text-[#ff1744]">def</span> <span class="text-[#00e5ff]">leap_of_faith</span>(self):
+                </p>
+                <p class="pl-8 text-[#ffea00] italic">
+                  return "Turning curiosity into code."
+                </p>
+              </div>
+
+              <!-- Live Verification Pill -->
+              <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[11px]">
+                <span class="text-gray-400 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-[#00e5ff]"></span>
+                  Status: Active Builder
+                </span>
+                <span class="text-[#00e5ff] font-semibold">NST Hyderabad</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[#00e5ff]/60 animate-bounce">
+      <span class="font-mono text-[9px] tracking-widest uppercase">Scroll Down</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT ME
+       ========================================================================== -->
+  <section id="about" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: Text Content -->
+        <div class="space-y-6 reveal-left">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Who Am I</span>
+              <span class="px-2 py-0.5 rounded bg-[#00e5ff]/15 border border-[#00e5ff]/30 font-mono text-xs text-[#00e5ff]">1ST YEAR CSE</span>
+            </div>
+            <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-1 leading-tight">
+              A builder at heart,<br>
+              <span class="grad-spider glitch-target">a learner by choice.</span>
+            </h2>
+          </div>
+
+          <p class="text-gray-300 leading-relaxed text-lg">
+            I'm <strong class="text-white glitch-target">Harsh Bhardwaj</strong>, a first-year student in the <strong class="text-[#00e5ff]">Computer Science & Engineering</strong> branch at <strong class="text-[#ffea00]">Newton School of Technology (NST)</strong>, Hyderabad.
+          </p>
+
+          <p class="text-gray-400 leading-relaxed">
+            I believe that the best way to master computer science is by building genuine projects right from the beginning. That mindset led me to participate in campus hackathons in my very first year and create <strong class="text-[#00e5ff]">Reporbit</strong>.
+          </p>
+
+          <p class="text-gray-400 leading-relaxed">
+            Right now, I am immersing myself in Python programming, discrete mathematics, physics, and SNAI — building strong foundational depth while experimenting with modern developer tools.
+          </p>
+
+          <!-- Mini Stats -->
+          <div class="grid grid-cols-3 gap-4 pt-4">
+            <div class="glass card-glitch-border p-4 rounded-2xl text-center">
+              <div class="font-heading text-2xl font-bold text-white count-up" data-target="1" data-suffix="st">0</div>
+              <div class="font-mono text-[11px] text-[#00e5ff] mt-1">Year CSC</div>
+            </div>
+            <div class="glass card-glitch-border p-4 rounded-2xl text-center">
+              <div class="font-heading text-2xl font-bold text-[#ffea00] count-up" data-target="3" data-suffix="rd">0</div>
+              <div class="font-mono text-[11px] text-[#ff1744] font-semibold mt-1">🏆 Hacktoberfest</div>
+            </div>
+            <div class="glass card-glitch-border p-4 rounded-2xl text-center">
+              <div class="font-heading text-2xl font-bold text-[#00e5ff] count-up" data-target="1" data-prefix="">0</div>
+              <div class="font-mono text-[11px] text-gray-400 mt-1">Reporbit Live</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Orbit Graphic -->
+        <div class="flex items-center justify-center reveal-right">
+          <div class="orbit-container">
+            <!-- Orbit Rings -->
+            <div class="orbit-ring">
+              <div class="orbit-dot bg-[#ff1744]/80 text-white" style="top: -18px; left: 50%; transform: translateX(-50%);">🐍</div>
+            </div>
+            <div class="orbit-ring">
+              <div class="orbit-dot bg-[#00e5ff]/80 text-black" style="top: 50%; right: -18px; transform: translateY(-50%);">🧮</div>
+            </div>
+            <div class="orbit-ring">
+              <div class="orbit-dot bg-[#ffea00]/80 text-black" style="bottom: -18px; left: 50%; transform: translateX(-50%);">⚛️</div>
+            </div>
+
+            <!-- Center Monogram -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[#00e5ff] via-[#8b5cf6] to-[#ff1744] flex items-center justify-center text-4xl sm:text-5xl font-heading font-extrabold text-white shadow-2xl shadow-[#00e5ff]/30 border-2 border-white/30 glitch-target">
+                HB
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==========================================================================
+       SKILLS
+       ========================================================================== -->
+  <section id="skills" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="text-center mb-16 reveal">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Technical Foundation</span>
+        <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-2">
+          Skills & <span class="grad-spider glitch-target">Technologies</span>
+        </h2>
+        <p class="text-gray-400 mt-3 max-w-lg mx-auto">The languages, frameworks, and subjects fueling my daily software journey.</p>
+      </div>
+
+      <!-- Skill Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
+
+        <!-- Python -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#ffea00]/15 flex items-center justify-center text-xl border border-[#ffea00]/30">🐍</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">Python</h3>
+              <p class="font-mono text-[11px] text-[#ffea00]">Primary Language • Active Exploration</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-[#ffea00]">72%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#ffea00] to-[#ff9100]" data-width="72%" style="color: #ffea00;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Variables, loops, functions, OOP basics, file handling, and basic data structures. Currently building practical scripts and utilities.</p>
+        </div>
+
+        <!-- HTML & CSS (Reporbit UI) -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#00e5ff]/15 flex items-center justify-center text-xl border border-[#00e5ff]/30">🎨</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">HTML5 & Modern CSS</h3>
+              <p class="font-mono text-[11px] text-[#00e5ff]">Used to build Reporbit's Winning UI</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-[#00e5ff]">78%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#00e5ff] to-[#8b5cf6]" data-width="78%" style="color: #00e5ff;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Semantic HTML5, Flexbox, CSS Grid, responsive design, animations, and clean visual structure praised in Hacktoberfest.</p>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#ff1744]/15 flex items-center justify-center text-xl border border-[#ff1744]/30">⚡</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">JavaScript</h3>
+              <p class="font-mono text-[11px] text-[#ff5252]">DOM Interaction & Dynamic Logic</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-[#ff5252]">55%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#ff1744] to-[#ff5252]" data-width="55%" style="color: #ff1744;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">DOM manipulation, event handling, ES6 basics, and client-side logic powering interactive coding exercises.</p>
+        </div>
+
+        <!-- Mathematics -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#8b5cf6]/15 flex items-center justify-center text-xl border border-[#8b5cf6]/30">🧮</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">Mathematics</h3>
+              <p class="font-mono text-[11px] text-violet-300">Discrete Math & Linear Algebra</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-violet-300">65%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#8b5cf6] to-[#00e5ff]" data-width="65%" style="color: #8b5cf6;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Calculus, probability, and discrete mathematics — building foundational understanding for future algorithms and AI platforms.</p>
+        </div>
+
+        <!-- Physics -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#00e5ff]/15 flex items-center justify-center text-xl border border-[#00e5ff]/30">⚛️</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">Physics</h3>
+              <p class="font-mono text-[11px] text-[#00e5ff]">Physical Principles of Computing</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-[#00e5ff]">60%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#00e5ff] to-[#ffea00]" data-width="60%" style="color: #00e5ff;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Electromagnetism, mechanics, and wave theory — understanding the hardware layers underlying digital processors.</p>
+        </div>
+
+        <!-- SNAI -->
+        <div class="glass card-glitch-border p-6 rounded-2xl reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-[#ffea00]/15 flex items-center justify-center text-xl border border-[#ffea00]/30">🤖</div>
+            <div>
+              <h3 class="font-heading font-bold text-white glitch-target">SNAI</h3>
+              <p class="font-mono text-[11px] text-[#ffea00]">AI Curriculum @ NST</p>
+            </div>
+            <span class="ml-auto font-mono text-sm font-bold text-[#ffea00]">50%</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill bg-gradient-to-r from-[#ffea00] to-[#00e5ff]" data-width="50%" style="color: #ffea00;"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Studying practical applications of artificial intelligence, intelligent systems, and prompt methodologies.</p>
+        </div>
+
+      </div>
+
+      <!-- Marquee Tools -->
+      <div class="mt-16 overflow-hidden reveal">
+        <div class="text-center mb-6">
+          <span class="font-mono text-xs text-gray-400 uppercase tracking-widest">Technologies & Tools</span>
+        </div>
+        <div class="relative overflow-hidden py-4" style="mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);">
+          <div class="marquee-track">
+            <div class="flex gap-4">
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-gray-300">Python 3</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ff1744]/20 font-mono text-xs text-[#00e5ff]">HTML5</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ffea00]/20 font-mono text-xs text-[#ff5252]">CSS3</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-[#ffea00]">JavaScript</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 font-mono text-xs text-gray-300">VS Code</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ff1744]/20 font-mono text-xs text-gray-300">Git & GitHub</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-[#00e5ff]">Tailwind CSS</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ffea00]/20 font-mono text-xs text-[#ffea00]">Figma</span>
+            </div>
+            <div class="flex gap-4" aria-hidden="true">
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-gray-300">Python 3</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ff1744]/20 font-mono text-xs text-[#00e5ff]">HTML5</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ffea00]/20 font-mono text-xs text-[#ff5252]">CSS3</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-[#ffea00]">JavaScript</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 font-mono text-xs text-gray-300">VS Code</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ff1744]/20 font-mono text-xs text-gray-300">Git & GitHub</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#00e5ff]/20 font-mono text-xs text-[#00e5ff]">Tailwind CSS</span>
+              <span class="px-4 py-2 rounded-xl bg-white/[0.04] border border-[#ffea00]/20 font-mono text-xs text-[#ffea00]">Figma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==========================================================================
+       FEATURED PROJECT: REPORBIT
+       ========================================================================== -->
+  <section id="projects" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="text-center mb-16 reveal">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Flagship Project</span>
+        <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-2">
+          Reporbit — <span class="grad-spider glitch-target">Learn From Scratch</span>
+        </h2>
+        <p class="text-gray-400 mt-3 max-w-md mx-auto">Built during Hacktoberfest Hackathon, loved by judges, crafted for beginners.</p>
+      </div>
+
+      <!-- REPORBIT CARD -->
+      <div class="project-card max-w-4xl mx-auto reveal-scale">
+        <div class="project-card-inner glass card-glitch-border rounded-3xl overflow-hidden bg-[#0c0716]">
+
+          <!-- Banner -->
+          <div class="relative h-56 sm:h-64 bg-gradient-to-br from-[#00e5ff]/25 via-[#0c0716] to-[#ff1744]/25 flex items-center justify-center overflow-hidden border-b border-white/10">
+
+            <!-- Decorative Elements -->
+            <div class="absolute inset-0 opacity-15">
+              <pre class="font-mono text-[10px] text-[#00e5ff] absolute top-4 left-6">
+# Reporbit Interactive Learning
+def start_coding():
+    learner = "Anyone can code from zero"
+    print(f"Welcome, {learner}!")
+              </pre>
+            </div>
+
+            <!-- Main Title Overlay -->
+            <div class="relative z-10 text-center px-6">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ffea00]/15 border border-[#ffea00]/40 font-mono text-xs text-[#ffea00] mb-3 shadow-lg shadow-[#ffea00]/20">
+                <span>🏆</span> 3rd Place — Hacktoberfest Hackathon
+              </div>
+              <h3 class="font-heading text-5xl sm:text-6xl font-extrabold text-white tracking-tight glitch-target">
+                Rep<span class="text-[#00e5ff]">orbit</span>
+              </h3>
+              <p class="font-mono text-sm text-gray-300 mt-2">A Beginner's Gateway into Programming</p>
+            </div>
+          </div>
+
+          <!-- Project Details -->
+          <div class="p-6 sm:p-10 space-y-6">
+
+            <p class="text-gray-300 text-base leading-relaxed">
+              <strong class="text-white glitch-target">Reporbit</strong> is a beginner-centric coding platform engineered to help newcomers overcome the fear of syntax and build confidence from scratch. Built during the high-stakes <strong class="text-[#ffea00]">Hacktoberfest Hackathon</strong> at Newton School of Technology, it combines an eye-catching UI with structured exercises, earning our team <strong class="text-[#00e5ff] font-semibold">3rd Position</strong> campus-wide!
+            </p>
+
+            <!-- Feature Highlights -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+                <div class="text-2xl mb-2">📚</div>
+                <h4 class="font-heading font-semibold text-white text-sm glitch-target">Beginner-First Tutorials</h4>
+                <p class="text-xs text-gray-400 mt-1">Gentle step-by-step introduction to Python and web foundations</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+                <div class="text-2xl mb-2">🎨</div>
+                <h4 class="font-heading font-semibold text-[#00e5ff] text-sm glitch-target">Award-Winning UI</h4>
+                <p class="text-xs text-gray-400 mt-1">High praise from Hacktoberfest judges for visual hierarchy and clean aesthetics</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
+                <div class="text-2xl mb-2">🚀</div>
+                <h4 class="font-heading font-semibold text-[#ffea00] text-sm glitch-target">Hands-On Practice</h4>
+                <p class="text-xs text-gray-400 mt-1">Interactive code exercises instead of passive reading</p>
+              </div>
+            </div>
+
+            <!-- Tech Stack + Links -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-white/10">
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-lg bg-[#00e5ff]/15 text-[#00e5ff] font-mono text-xs border border-[#00e5ff]/30">HTML5</span>
+                <span class="px-3 py-1 rounded-lg bg-[#ff1744]/15 text-[#ff5252] font-mono text-xs border border-[#ff1744]/30">CSS3</span>
+                <span class="px-3 py-1 rounded-lg bg-[#ffea00]/15 text-[#ffea00] font-mono text-xs border border-[#ffea00]/30">JavaScript</span>
+                <span class="px-3 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 font-mono text-xs border border-emerald-500/30">Python</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <a href="#contact" class="btn-magnetic btn-primary !py-2 !px-4 !text-xs !rounded-xl">
+                  <span>Explore Reporbit</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==========================================================================
+       ACHIEVEMENTS: HACKTOBERFEST HACKATHON
+       ========================================================================== -->
+  <section id="achievements" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="text-center mb-16 reveal">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Campus Milestone</span>
+        <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-2">
+          Hacktoberfest <span class="grad-spider glitch-target">Hackathon</span>
+        </h2>
+      </div>
+
+      <!-- Hacktoberfest Trophy Card -->
+      <div class="max-w-2xl mx-auto reveal-scale">
+        <div class="trophy-shimmer rounded-3xl">
+          <div class="glass card-glitch-border p-8 sm:p-10 rounded-3xl text-center space-y-6 bg-[#0c0716]/95">
+
+            <!-- Trophy Icon -->
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#ffea00]/25 via-[#ff1744]/20 to-[#00e5ff]/20 border-2 border-[#ffea00] mx-auto shadow-2xl shadow-[#ffea00]/25">
+              <span class="text-4xl">🏆</span>
+            </div>
+
+            <!-- Title -->
+            <div>
+              <div class="font-mono text-xs text-[#ffea00] tracking-widest uppercase mb-1">Campus Podium Finish</div>
+              <h3 class="font-heading text-3xl font-extrabold text-white glitch-target">3rd Position — Hacktoberfest Hackathon</h3>
+              <p class="font-mono text-sm text-[#00e5ff] mt-1">Newton School of Technology • Hyderabad Campus</p>
+            </div>
+
+            <!-- Description -->
+            <p class="text-gray-300 leading-relaxed max-w-lg mx-auto">
+              Competed with talented teams across campus, building and pitching <strong class="text-white glitch-target">Reporbit</strong> in an intensive hackathon sprint. Our project clinched <strong class="text-[#ffea00]">3rd place</strong>, praised by jury members for high-fidelity UI aesthetics, smooth UX, and genuine beginner utility.
+            </p>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+              <div>
+                <div class="font-heading text-2xl font-bold text-[#ffea00]">24 Hours</div>
+                <div class="font-mono text-[11px] text-gray-400">Sprint Time</div>
+              </div>
+              <div>
+                <div class="font-heading text-2xl font-bold text-[#00e5ff]">Reporbit</div>
+                <div class="font-mono text-[11px] text-gray-400">Product Built</div>
+              </div>
+              <div>
+                <div class="font-heading text-2xl font-bold text-[#ff1744]">Top 3</div>
+                <div class="font-mono text-[11px] text-gray-400">Campus Standing</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==========================================================================
+       JOURNEY / TIMELINE
+       ========================================================================== -->
+  <section id="journey" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="text-center mb-16 reveal">
+        <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Timeline</span>
+        <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-2">
+          The <span class="grad-spider glitch-target">Journey</span>
+        </h2>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative max-w-2xl mx-auto pl-14 space-y-12">
+        <div class="timeline-line"></div>
+
+        <!-- Current: NST -->
+        <div class="relative reveal">
+          <div class="timeline-node" style="border-color: #00e5ff;"></div>
+          <div class="glass card-glitch-border p-6 rounded-2xl bg-[#0c0716]/90">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[#00e5ff]/20 text-[#00e5ff] border border-[#00e5ff]/40 font-semibold">2024 — Present</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[#ffea00]/20 text-[#ffea00] border border-[#ffea00]/30 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00e5ff]"></span>
+                Current Phase
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white glitch-target">Newton School of Technology</h3>
+            <p class="font-mono text-xs text-[#ffea00] mt-0.5">B.Tech in Computer Science & Engineering • Hyderabad</p>
+            <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+              First-year student exploring Python, discrete mathematics, physics, and SNAI. Active builder in campus hackathons and tech initiatives.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hacktoberfest Win -->
+        <div class="relative reveal">
+          <div class="timeline-node" style="border-color: #ff1744;"></div>
+          <div class="glass card-glitch-border p-6 rounded-2xl bg-[#0c0716]/90">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[#ffea00]/20 text-[#ffea00] border border-[#ffea00]/40 font-semibold">2024</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[#ff1744]/20 text-[#ff5252] border border-[#ff1744]/30">🏆 Hackathon Win</span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white glitch-target">Hacktoberfest Hackathon (3rd Place)</h3>
+            <p class="font-mono text-xs text-[#00e5ff] mt-0.5">Built Reporbit with team</p>
+            <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+              Delivered an intuitive, beautiful coding platform that impressed the jury, demonstrating team collaboration and high-speed execution under pressure.
+            </p>
+          </div>
+        </div>
+
+        <!-- First Spark -->
+        <div class="relative reveal">
+          <div class="timeline-node" style="border-color: #ffea00;"></div>
+          <div class="glass card-glitch-border p-6 rounded-2xl bg-[#0c0716]/90">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-gray-300 font-semibold">The Beginning</span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white glitch-target">First Line of Code</h3>
+            <p class="font-mono text-xs text-[#ffea00] mt-0.5">The spark that ignited everything</p>
+            <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+              Discovered that programming is the closest superpower we have in the real world — building tools that create impact out of pure logic.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==========================================================================
+       CONTACT
+       ========================================================================== -->
+  <section id="contact" class="py-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        <!-- Left: Channels -->
+        <div class="space-y-6 reveal-left">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-[0.2em] text-[#ffea00] font-semibold">Get In Touch</span>
+            <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mt-2 leading-tight">
+              Let's build<br>
+              <span class="grad-spider glitch-target">something great.</span>
+            </h2>
+          </div>
+
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Have a hackathon idea? Want to collaborate or just talk about Python, computer science, and tech? Drop a message!
+          </p>
+
+          <!-- Contact Channels -->
+          <div class="space-y-3 pt-4">
+            <a href="mailto:harsh.bhardwaj@nst.edu.in" class="flex items-center gap-3 p-4 rounded-2xl glass card-glitch-border bg-[#0c0716]/90 group">
+              <div class="w-10 h-10 rounded-xl bg-[#00e5ff]/20 flex items-center justify-center text-[#00e5ff] group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              <div>
+                <div class="font-heading font-semibold text-sm text-white glitch-target">Direct Email</div>
+                <div class="font-mono text-xs text-gray-400">harsh.bhardwaj@nst.edu.in</div>
+              </div>
+            </a>
+
+            <a href="https://github.com/harsh-bhardwaj" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 rounded-2xl glass card-glitch-border bg-[#0c0716]/90 group">
+              <div class="w-10 h-10 rounded-xl bg-[#ff1744]/20 flex items-center justify-center text-[#ff1744] group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <div>
+                <div class="font-heading font-semibold text-sm text-white glitch-target">GitHub</div>
+                <div class="font-mono text-xs text-gray-400">github.com/harsh-bhardwaj</div>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/harsh-bhardwaj" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 rounded-2xl glass card-glitch-border bg-[#0c0716]/90 group">
+              <div class="w-10 h-10 rounded-xl bg-[#ffea00]/20 flex items-center justify-center text-[#ffea00] group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/></svg>
+              </div>
+              <div>
+                <div class="font-heading font-semibold text-sm text-white glitch-target">LinkedIn</div>
+                <div class="font-mono text-xs text-gray-400">linkedin.com/in/harsh-bhardwaj</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-right">
+          <form id="contact-form" class="glass card-glitch-border p-8 rounded-3xl bg-[#0c0716]/95 space-y-5">
+            <h3 class="font-heading text-xl font-bold text-white mb-2 flex items-center justify-between">
+              <span class="glitch-target">Send Message</span>
+              <span class="text-xs font-mono text-[#00e5ff]">Direct Ingress</span>
+            </h3>
+
+            <div>
+              <label class="block font-mono text-xs text-gray-400 mb-1.5" for="name">Your Name</label>
+              <input type="text" id="name" required placeholder="e.g. Priya Sharma" class="glow-input">
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-gray-400 mb-1.5" for="email">Your Email</label>
+              <input type="email" id="email" required placeholder="priya@example.com" class="glow-input">
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-gray-400 mb-1.5" for="subject">Objective</label>
+              <select id="subject" class="glow-input">
+                <option value="hackathon">Hackathon Collaboration 🏆</option>
+                <option value="project">Project Building 🚀</option>
+                <option value="hello">Just Saying Hello! 👋</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-gray-400 mb-1.5" for="message">Message</label>
+              <textarea id="message" rows="4" required placeholder="What's on your mind?" class="glow-input" style="resize: none;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-magnetic btn-primary w-full !justify-center flex items-center gap-2">
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="border-t border-white/10 py-10 relative z-10 bg-[#06030b]">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#ff1744] flex items-center justify-center font-heading font-bold text-white text-xs">
+            HB
+          </div>
+          <span class="font-heading text-sm text-gray-400">
+            Engineered by <span class="text-white font-semibold glitch-target">Harsh Bhardwaj</span> • NST Hyderabad
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6 font-mono text-xs text-gray-500">
+          <a href="#hero" class="hover:text-[#00e5ff] transition-colors">Back to Top ↑</a>
+          <span>•</span>
+          <span class="text-[#00e5ff]">EARTH-1610</span>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-6">
+        <p class="font-mono text-[11px] text-gray-600">
+          "That's all it is. A leap of faith."
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
